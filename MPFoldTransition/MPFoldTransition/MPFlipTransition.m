@@ -448,8 +448,16 @@ static inline double mp_radians (double degrees) {return degrees * M_PI/180;}
 	double factor = (isFallingBack? -1 : 1) * (forwards? -1 : 1) * (vertical? -1 : 1) * M_PI / 180;
 	CGFloat coveredPageShadowOpacity = [self coveredPageShadowOpacity];
 	
+	
+	
+	
 	// Create a transaction
 	[CATransaction begin];
+
+	[UIView animateWithDuration:duration*1.5f animations:^{
+	    [self.sourceView setAlpha:0.0f];
+	} completion:nil];
+	
 	[CATransaction setValue:[NSNumber numberWithFloat:duration] forKey:kCATransactionAnimationDuration];
 	[CATransaction setValue:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn] forKey:kCATransactionAnimationTimingFunction];
 	[CATransaction setCompletionBlock:^{
